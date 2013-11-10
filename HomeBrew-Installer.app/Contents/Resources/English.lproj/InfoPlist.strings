@@ -1,0 +1,4 @@
+CFBundleName = "HomeBrew Installer";
+CFBundleShortVersionString = "1.0";
+CFBundleGetInfoString = "HomeBrew Installer version 1.0 Copyright 2013 Arjan van Lent - Codejugglers";
+NSHumanReadableCopyright = "Copyright 2013 Arjan van Lent - Codejugglers.";
