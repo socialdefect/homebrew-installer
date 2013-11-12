@@ -1,23 +1,23 @@
 #!/bin/sh
 
 if [ -f /usr/local/bin/brew ] ; then
-	echo 'Homebrew is allready installed!!'
-	echo 'To Reinstall first remove the previous install Then run this installer again.'
-	echo 'To COMPLETELY remove HomeBrew AND everything it installed run: rm -rf /usr/local/Cellar'
+	echo 'Homebrew is already installed!!'
+	echo 'To reinstall, first remove the previous install, then run this installer again.'
+	echo 'To COMPLETELY remove Homebrew AND everything it installed run: rm -rf /usr/local/Cellar'
 	echo
 	exit 1
 fi
 
 if [ `uname -p` = 'powerpc' ] ; then
 	echo '##########################################################'
-	echo '    Attempting to install TigerBrew for PowerPC.....'
+	echo '    Attempting to install Tigerbrew for PowerPC.....'
 	echo '##########################################################'
 	echo ''
 	ruby -e "$(curl -fsSkL raw.github.com/mistydemeo/tigerbrew/go)"
 	echo
 else
 	echo '##########################################################'
-	echo '    Attempting to install HomeBrew for Intel Mac.....'
+	echo '    Attempting to install Homebrew for Intel Mac.....'
 	echo '##########################################################'
 	echo ''
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
@@ -34,7 +34,7 @@ else
 	OUTCOME='FAILED, Try Again...'
 	echo '##########################################################'
 	echo '    Attempt to install Homebrew $OUTCOME...'
-	echo '==> To COMPLETELY remove HomeBrew AND everything it installed run:'
+	echo '==> To COMPLETELY remove Homebrew AND everything it installed run:'
 	echo '  rm -rf /usr/local/Cellar'
 	echo '##########################################################'
 	echo
@@ -45,39 +45,32 @@ if [ -f `which brew` ] ; then
 	echo '/usr/local/bin is allready in your PATH.... Calling brew to finish the install..'
 	echo	
 else
-	echo 'Brew is not in your PATH... I will try to add it for you...'
+	echo 'Brew is not in your PATH. This script will add it for you.'
 	echo
 	echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc
 	if [ $? != 0 ] ; then
 		echo '  ==> Failed to permanently add /usr/local/bin to your system path...'
-		echo '  ==> Please manually edit the file /home/$USER/.bashrc and add the following line;'
-		echo '  ==> export PATH="/usr/local/bin:$PATH"'
+		echo '  ==> Please manually edit the file /home/$USER/.bashrc and add the following line:'
+		echo '    export PATH="/usr/local/bin:$PATH"'
 		PATH="/usr/local/bin:$PATH"
-		echo 'Temporarily added: /usr/local/bin to your PATH.... Calling brew to finish the install..'
+		echo 'Temporarily added: /usr/local/bin to your PATH. Calling brew to finish the install.'
 		echo
 	fi
 fi
 
 	echo '##########################################################'
-	echo '==> Check The Following Output For Errors And Fix Those First! (Just Copy The Commands brew suggests...)'
-	echo '==> Run: brew doctor   To check if all errors have been fixed'
-	echo '  ==> Once everything is in place run: brew update  To sync the latest HomeBrew application catalogs...'
-	echo '  ==> Type: brew help   To find out how to use HomeBrew.'
+	echo '==> Check the following output for potential problems!'
+	echo '	You may want to fix these first! (Just copy the commands brew suggests...)'
+	echo '==> Run `brew doctor` to check if all warnings have been fixed'
+	echo '  Once everything is in place run `brew update` to sync the latest Homebrew application catalogs.'
+	echo '==> Type `brew help` or `man brew` to find out how to use Homebrew.'
 	echo '##########################################################'
 	echo
-	
+
 	brew doctor
-	
-	echo '##########################################################'
-	echo '==> Check The Output Above For Errors And Fix Those First! (Just Copy The Commands brew suggests...)'
-	echo '==> Next Run: brew doctor   To check if all errors have been fixed'
-	echo '  ==> Once everything is in place run: brew update  To sync the latest TigerBrew application catalogs...'
-	echo '  ==> Type: brew help   To find out how to use HomeBrew.'
-	echo '##########################################################'
+
 	echo
-	echo '                           +++'
-	echo
-	echo '##### End HomeBrew / TigerBrew Auto-Installer... You Are On Your Own Again! #####'
+	echo '##### End Homebrew / Tigerbrew autoinstaller. You are on your own again! #####'
 	echo '         Installer By: Arjan van Lent - Codejugglers 2013'
 	echo '                  *** http://codejugglers.nl ***'
 	echo
