@@ -9,16 +9,16 @@ if [ -f /usr/local/bin/brew ] ; then
 	exit 1
 fi
 
-if [ `uname -p` = 'powerpc' ] ; then
+if [ `sw_vers -productVersion | tr -d '.'` -le '1058' ] ; then
 	echo '##########################################################'
-	echo '    Attempting to install Tigerbrew for PowerPC.....'
+	echo '    Attempting to install Tigerbrew for Tiger/Leopard.....'
 	echo '##########################################################'
 	echo ''
 	ruby -e "$(curl -fsSkL raw.github.com/mistydemeo/tigerbrew/go)"
 	echo
 else
 	echo '##########################################################'
-	echo '    Attempting to install Homebrew for Intel Mac.....'
+	echo '    Attempting to install Homebrew for Snow Leopard + ....'
 	echo '##########################################################'
 	echo ''
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
